@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Stock Price Tracker</title>
+    <!-- Include any CSS styling you want to apply -->
+</head>
+<body>
+    <h1>Real-Time Stock Prices</h1>
+    <div id="stock_prices"></div>
+
+    <script>
+        function updateStockPrices() {
+            fetch('/get_stock_data')
+            .then(response => response.json())
+            .then(data => {
+                const stockPricesDiv = document.getElementById('stock_prices');
+                stockPricesDiv.innerHTML = '';
+
+                for (const stock in data) {
+                    const price = data[stock];
+                    const stockInfo = document.createElement('p');
+                    stockInfo.textContent = `${stock}: ${price}`;
+                    stockPricesDiv.appendChild(stockInfo);
+                }
+            });
+        }
+
+        // Update stock prices every 10 seconds
+        setInterval(updateStockPrices, 10000);
+        updateStockPrices(); // Initial update
+    </script>
+</body>
+</html>
