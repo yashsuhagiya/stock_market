@@ -28,6 +28,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add updated_chart.html
+        git add index.html
         git commit -m "Update stock data and charts"
         git push origin gh-pages
