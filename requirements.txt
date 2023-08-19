@@ -5,5 +5,4 @@ yfinance
 pandas
 plotly
 datetime
-io
 base64
